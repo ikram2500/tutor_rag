@@ -173,9 +173,9 @@ def signup_page():
             if submitted:
                 endpoint = "/signup/student" if role == "Student" else "/signup/teacher"
                 payload = {
-                    "fullName": full_name,
+                    "fullname": full_name,
                     "email": email,
-                    "userName": username,
+                    "username": username,
                     "password": password,
                 }
                 if role == "Student":

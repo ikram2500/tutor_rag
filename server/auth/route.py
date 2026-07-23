@@ -60,7 +60,7 @@ def signup_teacher(req: TeacherUser):
             "username": req.username, 
             "password": hashed_password,
             "role": "Teacher",
-            "school":req.school    
+            "school":req.school if req.school else ""    
      })
     return{ "message": "Teacher user created successfully" }
 

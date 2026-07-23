@@ -26,6 +26,10 @@ build/
 # Documents
 *.pdf
 
+# Postman
+.postman/
+postman/
+
 # Editor and operating-system files
 .vscode/
 .idea/
