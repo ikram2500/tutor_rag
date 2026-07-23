@@ -90,8 +90,10 @@ async def check_quiz_answer(request:QuizAnswerRequest,user=Depends(authenticate)
 
      correct_answers = []
      for line in quiz_doc["quiz_data"].split("\n"):
-          if line.startwith("Correct Answer:"):
-               correct_answers.append(line.split(":")[1].strip[0])
+          if line.strip().startswith("Correct Answer:"):
+               correct_answers.append(
+                   line.split(":", 1)[1].strip().upper()[:1]
+               )
 
      if len(request.answers) != len(correct_answers):
           raise HTTPException(400, "Answer count mismatch")
