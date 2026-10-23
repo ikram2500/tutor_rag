@@ -69,3 +69,4 @@ def signup_teacher(req: TeacherUser):
 def login(user:str=Depends(authenticate)):
     """Handles user login"""
     return {"message":f"Welcome {user['username']}","role":user["role"]}
+

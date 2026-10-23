@@ -19,3 +19,4 @@ def home():
 @app.get("/healthCheck")
 def health_check():
     return {"status": "tutor-rag is running!"}
+

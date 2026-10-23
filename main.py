@@ -7,3 +7,4 @@ app = FastAPI()
 def health_check():
     return {"status": "App is running successfully!"}
 
+

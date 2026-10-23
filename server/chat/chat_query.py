@@ -33,7 +33,7 @@ You are a helpfull educational assistant.
 Answer the question using Only the context below. 
 
 Question:
-{question}
+{question}    
 
 Context:
 {context}
