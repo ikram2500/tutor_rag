@@ -32,7 +32,7 @@ bcrypt
 
 
 streamlit
-requests
+
 
 
 
