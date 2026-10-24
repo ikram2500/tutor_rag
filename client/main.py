@@ -13,6 +13,13 @@ load_dotenv()
 
 BACKEND_URL = os.getenv("BACKEND_URL")
 
+if not BACKEND_URL and "BACKEND_URL" in st.secrets:
+    BACKEND_URL = st.secrets["BACKEND_URL"]
+
+# Safety check so you can catch it instantly if it's missing
+if not BACKEND_URL:
+    st.error("🚨 BACKEND_URL is missing! Please configure it in your Streamlit Secrets.")
+
 BASE_DIR = os.path.dirname(__file__)
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
