@@ -78,7 +78,7 @@ def signup_teacher(req: TeacherUser):
 
 
 @router.get("/login")
-def login(user: str =Depends(authenticate)):
+def login(user: dict =Depends(authenticate)):
     """Handles user login"""
     return {"message":f"Welcome {user['username']}","role":user["role"]}
 
