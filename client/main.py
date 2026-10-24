@@ -121,7 +121,7 @@ def login_page():
             submitted = st.form_submit_button("Login")
 
             if submitted:
-                r = requests.post(
+                r = requests.get(
                     f"{BACKEND_URL}/login",
                     auth=HTTPBasicAuth(username, password),
                 )
