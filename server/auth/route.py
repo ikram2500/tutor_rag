@@ -1,3 +1,4 @@
+from bson import is_valid
 from fastapi import APIRouter, HTTPException, Depends 
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from  .model import StudentUser, TeacherUser 
@@ -12,9 +13,20 @@ security=HTTPBasic()
 
 def authenticate(credentials:HTTPBasicCredentials=Depends(security)):
     """Authenticates a user using HTTP Basic Auth"""
+    print(f"DEBUG: Attempting login for username: '{credentials.username}'")
     user=users_collection.find_one({"username":credentials.username})
+    print(f"DEBUG: User found in DB: {user}")
     if not user or not verify_password(credentials.password, user.get("password")):
+        print("DEBUG: Username not found in database.")
         raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    is_valid = verify_password(credentials.password, user.get("password"))
+    print(f"DEBUG: Password verification result: {is_valid}")
+
+    if not is_valid:
+        print("DEBUG: Password verification failed.")
+        raise HTTPException(status_code=401, detail="Invalid username or password")
+
     return {
         "username": user.get("username"),
         "role": user.get("role"),
